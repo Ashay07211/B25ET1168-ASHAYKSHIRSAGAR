@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class String {
+    char str[100];
+
+public:
+    // Default constructor
+    String() {
+        strcpy(str, "");
+    }
+
+    // Parameterized constructor
+    String(const char s[]) {
+        strcpy(str, s);
+    }
+
+    // Accept string from user
+    void Accept() {
+        cout << "Enter a string: ";
+        cin >> str;
+    }
+
+    // Display the string
+    void Display() {
+        cout << "String = " << str << endl;
+    }
+
+    // Destructor
+    ~String() {
+        cout << "Destructor called." << endl;
+    }
+};
+
+int main() {
+    // Creating object using default constructor
+    String s1;
+
+    // Accepting string from user
+    s1.Accept();
+
+    // Displaying the string
+    s1.Display();
+
+    // Creating object using parameterized constructor
+    String s2("Hello");
+
+    // Displaying the string
+    cout << "\nString created using parameterized constructor:" << endl;
+    s2.Display();
+
+    // Destructor is automatically called when objects go out of scope
+    return 0;
+}
