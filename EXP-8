@@ -1,0 +1,84 @@
+
+#include <iostream>
+using namespace std;
+
+// Base class 1: Employee basic details
+class Employee
+{
+protected:
+    int empId;
+    string name;
+
+public:
+    void getEmployeeDetails()
+    {
+        cout << "Enter Employee ID: ";
+        cin >> empId;
+
+        cout << "Enter Employee Name: ";
+        cin >> name;
+    }
+
+    void displayEmployeeDetails()
+    {
+        cout << "\nEmployee ID: " << empId;
+        cout << "\nEmployee Name: " << name;
+    }
+};
+
+// Base class 2: Salary details
+class Salary
+{
+protected:
+    float basicSalary, hra, da;
+
+public:
+    void getSalaryDetails()
+    {
+        cout << "Enter Basic Salary: ";
+        cin >> basicSalary;
+
+        cout << "Enter HRA: ";
+        cin >> hra;
+
+        cout << "Enter DA: ";
+        cin >> da;
+    }
+};
+
+// Derived class using multiple inheritance
+class GrossSalary : public Employee, public Salary
+{
+    float gross;
+
+public:
+    void calculate()
+    {
+        gross = basicSalary + hra + da;
+    }
+
+    void display()
+    {
+        displayEmployeeDetails();
+
+        cout << "\nBasic Salary: " << basicSalary;
+        cout << "\nHRA: " << hra;
+        cout << "\nDA: " << da;
+        cout << "\nGross Salary: " << gross << endl;
+    }
+};
+
+int main()
+{
+    GrossSalary emp;
+
+    emp.getEmployeeDetails();
+    emp.getSalaryDetails();
+
+    emp.calculate();
+
+    cout << "\n----- Employee Salary Details -----";
+    emp.display();
+
+    return 0;
+}
